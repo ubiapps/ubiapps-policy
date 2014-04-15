@@ -1,10 +1,10 @@
-# webinos-policy
+# ubiapps-policy
 
-A Nodejs XACML-like access control policy engine, developed as part of the webinos project.
+A Nodejs XACML-like access control policy engine.
 
 ## Functionalty
 
-* Currently works with the webinos-pzp component
+* Currently works with the pzp component
 * Provides a mediation interface, so that any component may defer decision to the access logic
 * Interprets a set of policy rules active on the PZP
 * Implement real-time policy enforcement (PEP) logic and enforce the constraints
