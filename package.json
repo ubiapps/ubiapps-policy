@@ -1,0 +1,59 @@
+{
+  "name": "webinos-policy",
+  "publishConfig": {
+    "tag": "alpha"
+  },
+  "description": "Policy Manager",
+  "keywords": [
+    "webinos",
+    "policy",
+    "manager"
+  ],
+  "version": "0.0.3",
+  "homepage": "http://webinos.org/",
+  "author": {
+    "name": "Stefano Vercelli",
+    "email": "stefano.vercelli@telecomitalia.it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://dev.webinos.org/git/wp4.git"
+  },
+  "bugs": {
+    "email": "webinos-wp4-ml@fokus.fraunhofer.de"
+  },
+  "directories": {
+    "contrib": "./contrib",
+    "demo": "./demo",
+    "lib": "./lib",
+    "src": "./src"
+  },
+  "main": "./lib/policymanager.js",
+  "dependencies": {
+    "webinos-jsonrpc2": "*",
+    "JSV": "4.x.x",
+    "sax": "0.x.x",
+    "xml2js": "0.x.x",
+    "data2xml": "0.8.x",
+    "node-uuid": "1.3.x",
+    "crypto": "0.x.x"
+  },
+  "devDependencies": {
+    "jasmine-node": "1.x.x",
+    "webinos-utilities": "git://github.com/webinos/webinos-utilities.git",
+    "webinos-api-applauncher": "git://github.com/webinos/webinos-api-applauncher"
+  },
+  "bundleDependencies": [],
+  "scripts": {
+    "install": "node-gyp configure build",
+    "test": "./test/tools/run-all.sh"
+  },
+  "readme": "# webinos-policy\r\n\r\nA Nodejs XACML-like access control policy engine, developed as part of the webinos project.\r\n\r\n## Functionalty\r\n\r\n* Currently works with the webinos-pzp component\r\n* Provides a mediation interface, so that any component may defer decision to the access logic\r\n* Interprets a set of policy rules active on the PZP\r\n* Implement real-time policy enforcement (PEP) logic and enforce the constraints\r\n\r\n## Compilation\r\n\r\nTo compile the policy manager:\r\n\r\nLinux/Mac: \r\n> npm install\r\n\r\nAndroid:\r\n> ndk-build NDK_PROJECT_PATH=. NDK_APPLICATION_MK=Application.mk\r\n\r\n## Test\r\n\r\nTo test the policy manager:\r\n\r\nLinux/Mac:\r\n> npm test\r\n\r\n### Scenarios related to tests in test/jasmine.scenarios/\r\n\r\n1.  Pre-journey: 10 minutes before the journey\r\n\r\n Helen and Eric are getting ready to visit Peter.  Helen wants to ensure Eric has access to some videos for the journey.\r\n * From: helen_jennings@pzh.webinos.org/HeleniPhone\r\n * To: helen_jennings@pzh.webinos.org/HeleniMac\r\n * Resource: http://webinos.org/api/mediacontent\r\n * Environment: Helen Family\r\n * Expected Result: ALLOW\r\n\r\n2.  Stuck in traffic: 30 minutes into the journey\r\n\r\n Helen’s car is stuck in traffic as she pulls onto motorway.  Helen calls Peter to say she’s running late.  Peter runs up KiF to see where Helen is.\r\n * From: peter_jones@pzh.webinos.org/PeteriPad\r\n * To: helen_jennings@pzh.webinos.org/HelenGalaxyNote\r\n * Resource: http://webinos.org/api/w3c/geolocation\r\n * Environment: Helen Travel\r\n * Expected Result: DENY\r\n\r\n3.  Service station: 2 hours into the journey\r\n\r\n Helen has pulled into a service station for a comfort stop.  Because Eric is bored of the videos and getting restless, Helen asks Peter to keep an eye on Eric.  Peter decides to connect to Eric’s KiF session to play a card game.\r\n * From: peter_jones@pzh.webinos.org/PeterTV\r\n * To: helen_jennings@pzh.webinos.org/HelenGalaxyNote\r\n * Resource: http://webinos.org/api/w3c/webrtc\r\n * Environment: Helen Travel\r\n * Expected Result: ALLOW\r\n\r\n and\r\n * From: helen_jennings@pzh.webinos.org/HelenGalaxyNote\r\n * To: peter_jones@pzh.webinos.org/PeterTV\r\n * Resource: http://webinos.org/api/w3c/webrtc\r\n * Environment: Peter Home\r\n * Expected Result: ALLOW\r\n\r\n4.  Motorway: 2.5 hours into the journey\r\n\r\n Helen is distracting by how loud both Eric and Peter are.  Helen turns towards the back-seat and, over the microphone, asks Peter to turn the speaker volume down.\r\n * From: peter_jones@pzh.webinos.org/PeteriPad\r\n * To: helen_jennings@pzh.webinos.org/HelenGalaxyNote\r\n * Resource: http://webinos.org/api/deviceinteraction\r\n * Environment: Helen Travel\r\n * Expected Result: ALLOW\r\n\r\n5.  Country lane: 3 hours into the journey\r\n\r\n There is only about an hour left, but Eric has become bored to the game and is becoming restless again.  Helen asks Peter to put a video on for Eric.  Peter can’t find anything on Helen’s iMac so selects a video for Peter from his own library.\r\n * From: peter_jones@pzh.webinos.org/PeteriPad\r\n * To: helen_jennings@pzh.webinos.org/HeleniMac\r\n * Resource: http://webinos.org/api/mediacontent\r\n * Environment: Helen Travel\r\n * Expected Result: DENY\r\n\r\n and\r\n * From: helen_jennings@pzh.webinos.org/HelenGalaxyNote\r\n * To: peter_jones@pzh.webinos.org/PeterTV\r\n * Resource: http://webinos.org/api/mediacontent\r\n * Environment: Peter Home\r\n * Expected Result: ALLOW\r\n",
+  "readmeFilename": "README.md",
+  "_id": "webinos-policy@0.0.3",
+  "dist": {
+    "shasum": "fae0c7947b4670e54d13f1bb8ca8e414b941e202"
+  },
+  "_resolved": "git://github.com/webinos/webinos-policy.git#904f5614be260656dfa7e92c8fe15a94dcccc0e0",
+  "_from": "webinos-policy@git://github.com/webinos/webinos-policy.git"
+}
